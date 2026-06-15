@@ -252,3 +252,91 @@ void decompressTextFile()
     cout << "\nDecompressed!";
     waitForUser();
 }
+
+// ================= MENUS (FINAL CLEANUP) =================
+
+void passwordVaultMenu(string currentUser)
+{
+    int choice;
+    int secretKey = 5;
+
+    while (true)
+    {
+        clearScreen();
+        cout << "[ PASSWORD VAULT ]\n";
+        cout << "1. Save Password\n";
+        cout << "2. Retrieve Password\n";
+        cout << "3. Back\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        if (choice == 1)
+            saveVaultPassword(currentUser, secretKey);
+        else if (choice == 2)
+            retrieveVaultPassword(currentUser, secretKey);
+        else if (choice == 3)
+            break;
+        else
+        {
+            cout << "Invalid choice!";
+            waitForUser();
+        }
+    }
+}
+
+void textCompressorMenu()
+{
+    int choice;
+
+    while (true)
+    {
+        clearScreen();
+        cout << "[ TEXT COMPRESSOR ]\n";
+        cout << "1. Compress File\n";
+        cout << "2. Decompress File\n";
+        cout << "3. Back\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        if (choice == 1)
+            compressTextFile();
+        else if (choice == 2)
+            decompressTextFile();
+        else if (choice == 3)
+            break;
+        else
+        {
+            cout << "Invalid choice!";
+            waitForUser();
+        }
+    }
+}
+
+void toolkitMenu(string currentUser)
+{
+    int choice;
+
+    while (true)
+    {
+        clearScreen();
+        cout << "[ MAIN TOOLKIT ]\n";
+        cout << "Logged in as: " << currentUser << "\n";
+        cout << "1. Password Vault\n";
+        cout << "2. Text Compressor\n";
+        cout << "3. Logout\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        if (choice == 1)
+            passwordVaultMenu(currentUser);
+        else if (choice == 2)
+            textCompressorMenu();
+        else if (choice == 3)
+            break;
+        else
+        {
+            cout << "Invalid choice!";
+            waitForUser();
+        }
+    }
+}
